@@ -8,5 +8,5 @@ namespace EL
 
     class Telefono
     {
-
+     //Agregar indicativos
 }

@@ -14,4 +14,5 @@ namespace EL
         public string Email { get; set; }
 
     }
+
 }

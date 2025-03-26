@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace EL
 {
-    internal class Class1
+    internal class Entorno_Social
     {
+        public int ID { get; set; }
     }
 }

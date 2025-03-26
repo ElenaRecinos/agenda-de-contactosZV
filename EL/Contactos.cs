@@ -13,6 +13,16 @@ namespace EL
         public string Apellido { get; set; }
         public string Email { get; set; }
 
+        //agregar lista de telefonos
+        public List<Telefono> Telefonos { get; set; }
+
+        public Entorno_Social Entorno_Social { get; set; }
+
+        public Contactos()
+        {
+            //Añadir teléfonos
+            Telefonos = new List<Telefono>();
+        }
     }
 
 }

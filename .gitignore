@@ -1,0 +1,9 @@
+# Ignorar carpetas temporales de Visual Studio
+.vs/
+*.user
+*.suo
+*.vcxproj.user
+
+# Ignorar carpetas de build
+bin/
+obj/

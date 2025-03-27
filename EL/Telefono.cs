@@ -8,7 +8,9 @@ namespace EL
 {
     class Telefono
     {
-        public int ID {  get; set; }
+        public int ID { get; set; }
         public string Numero { get; set; }
+        public int Codigo_Area { get; set; }
+
     }
 }

@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EL
-
+{
     class Telefono
     {
-     //Agregar indicativos
+        public int ID {  get; set; }
+        public string Numero { get; set; }
+    }
 }

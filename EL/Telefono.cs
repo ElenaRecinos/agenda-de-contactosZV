@@ -11,6 +11,7 @@ namespace EL
         public int ID { get; set; }
         public string Numero { get; set; }
         public int Codigo_Area { get; set; }
+        public string Tipo { get; set; } 
 
     }
 }

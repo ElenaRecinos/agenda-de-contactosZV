@@ -42,6 +42,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.cbmEntorno_Social = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -176,11 +177,24 @@
             this.dataGridView1.Size = new System.Drawing.Size(357, 150);
             this.dataGridView1.TabIndex = 13;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(333, 125);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(73, 23);
+            this.checkBox1.TabIndex = 14;
+            this.checkBox1.Text = "Si tiene";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // FormContacto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(417, 450);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cbmEntorno_Social);
             this.Controls.Add(this.button2);
@@ -220,5 +234,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox cbmEntorno_Social;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

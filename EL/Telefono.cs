@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EL
 {
+    //Clases
     class Telefono
     {
         public int ID { get; set; }

@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace EL
 {
-    class Contactos
+    [Table("Contactos")]
+    public class Contacto
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
@@ -16,9 +19,9 @@ namespace EL
         //agregar lista de telefonos
         public List<Telefono> Telefonos { get; set; }
 
-        public Entorno_Social Entorno_Social { get; set; }
+        public EntornoSocial EntornoSocial { get; set; }
 
-        public Contactos()
+        public Contacto()
         {
             //Añadir teléfonos
             Telefonos = new List<Telefono>();

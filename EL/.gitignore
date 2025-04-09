@@ -1,0 +1,22 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build results
+bin/
+obj/
+*.dll
+*.exe
+
+# NuGet packages
+packages/
+*.nupkg
+*.snupkg
+project.lock.json
+project.assets.json
+
+# Others
+*.log
+*.tmp
+*.bak

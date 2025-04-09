@@ -4,7 +4,7 @@ VisualStudioVersion = 17.13.35723.152
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EL", "EL.csproj", "{79510E94-1FE5-45CA-A0A3-2F842017D95C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "Forms\GUI.csproj", "{425F763F-E0E9-448B-95D7-447EBB493ABE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{A55563D4-F4FE-456B-9C21-6C72E7BD2C77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,10 +16,10 @@ Global
 		{79510E94-1FE5-45CA-A0A3-2F842017D95C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79510E94-1FE5-45CA-A0A3-2F842017D95C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79510E94-1FE5-45CA-A0A3-2F842017D95C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{425F763F-E0E9-448B-95D7-447EBB493ABE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{425F763F-E0E9-448B-95D7-447EBB493ABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{425F763F-E0E9-448B-95D7-447EBB493ABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{425F763F-E0E9-448B-95D7-447EBB493ABE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A55563D4-F4FE-456B-9C21-6C72E7BD2C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A55563D4-F4FE-456B-9C21-6C72E7BD2C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A55563D4-F4FE-456B-9C21-6C72E7BD2C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A55563D4-F4FE-456B-9C21-6C72E7BD2C77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

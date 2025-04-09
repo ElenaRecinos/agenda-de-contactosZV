@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EL
 {
+    //Telefonos
     [Table("Telefono")]
     public class Telefono
     {

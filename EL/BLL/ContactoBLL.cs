@@ -10,13 +10,27 @@ namespace BLL
 {
     public class ContactoBLL
     {
+        private ContactoDAL dal = new ContactoDAL();
+
         public void Insertar(Contacto contacto)
         {
-            using (var context = new AgendaDbContext())
-            {
-                context.Contactos.Add(contacto);
-                context.SaveChanges();
-            }
+            dal.Insertar(contacto);
         }
+
+        public List<Contacto> ObtenerTodos()
+        {
+            return dal.ObtenerTodos();
+        }
+
+        public void Actualizar(Contacto contacto)
+        {
+            dal.Actualizar(contacto);
+        }
+
+        public void Eliminar(int id)
+        {
+            dal.Eliminar(id);
+        }
+
     }
 }

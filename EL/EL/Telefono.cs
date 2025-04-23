@@ -14,5 +14,7 @@ namespace EL
         public int Id { get; set; }
         public string Numero { get; set; }
         public string Tipo { get; set; } 
+
+        public int ContactoId { get; set; }
     }
 }

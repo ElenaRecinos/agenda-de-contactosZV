@@ -33,16 +33,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.dgvContactos = new System.Windows.Forms.DataGridView();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.cmbTipo = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContactos)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -95,18 +94,6 @@
             this.label4.Text = "Telefono:";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(455, 92);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 21);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Grupo";
-            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.LimeGreen;
@@ -122,29 +109,31 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnCancelar
             // 
-            this.button2.BackColor = System.Drawing.Color.LightCoral;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(184, 255);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 34);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnCancelar.BackColor = System.Drawing.Color.LightCoral;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(184, 255);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(106, 34);
+            this.btnCancelar.TabIndex = 6;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // dataGridView1
+            // dgvContactos
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(60, 307);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(566, 131);
-            this.dataGridView1.TabIndex = 7;
+            this.dgvContactos.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvContactos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvContactos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.dgvContactos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvContactos.Location = new System.Drawing.Point(12, 307);
+            this.dgvContactos.Name = "dgvContactos";
+            this.dgvContactos.Size = new System.Drawing.Size(682, 131);
+            this.dgvContactos.TabIndex = 7;
+            this.dgvContactos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // txtNombre
             // 
@@ -167,21 +156,22 @@
             this.txtEmail.Size = new System.Drawing.Size(210, 20);
             this.txtEmail.TabIndex = 10;
             // 
-            // textBox4
+            // txtTelefono
             // 
-            this.textBox4.Location = new System.Drawing.Point(160, 170);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(210, 20);
-            this.textBox4.TabIndex = 11;
+            this.txtTelefono.Location = new System.Drawing.Point(160, 170);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(210, 20);
+            this.txtTelefono.TabIndex = 11;
             // 
-            // comboBox1
+            // cmbTipo
             // 
-            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(430, 131);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 12;
+            this.cmbTipo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbTipo.FormattingEnabled = true;
+            this.cmbTipo.Location = new System.Drawing.Point(160, 206);
+            this.cmbTipo.Name = "cmbTipo";
+            this.cmbTipo.Size = new System.Drawing.Size(94, 21);
+            this.cmbTipo.TabIndex = 13;
+            this.cmbTipo.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // FormContacto
             // 
@@ -189,16 +179,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(646, 450);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox4);
+            this.ClientSize = new System.Drawing.Size(706, 450);
+            this.Controls.Add(this.cmbTipo);
+            this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.dgvContactos);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -206,7 +195,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormContacto";
             this.Text = "FormContacto";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.FormContacto_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContactos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,14 +208,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.DataGridView dgvContactos;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.ComboBox cmbTipo;
     }
 }

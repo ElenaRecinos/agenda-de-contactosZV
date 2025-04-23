@@ -124,5 +124,53 @@ namespace GUI
 
             cmbTipo.SelectedIndex = 0;
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvContactos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecciona un contacto completo para eliminar.");
+                return;
+            }
+
+            int idContacto = Convert.ToInt32(dgvContactos.SelectedRows[0].Cells["Id"].Value);
+
+            BLL.ContactoBLL servicio = new BLL.ContactoBLL();
+            servicio.Eliminar(idContacto);
+
+            MessageBox.Show("Contacto eliminado.");
+            CargarContactos();
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            if (dgvContactos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecciona un contacto completo para actualizar.");
+                return;
+            }
+
+            int idContacto = Convert.ToInt32(dgvContactos.SelectedRows[0].Cells["Id"].Value);
+
+           
+            var contacto = new EL.Contacto
+            {
+                Id = idContacto,
+                Nombre = txtNombre.Text,
+                Apellido = txtApellido.Text,
+                Email = txtEmail.Text
+            };
+
+            BLL.ContactoBLL servicio = new BLL.ContactoBLL();
+            servicio.Actualizar(contacto);
+
+            MessageBox.Show("Contacto actualizado.");
+            CargarContactos(); 
+        }
     }
 }

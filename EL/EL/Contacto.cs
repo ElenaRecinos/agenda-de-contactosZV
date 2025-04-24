@@ -18,7 +18,6 @@ namespace EL
         public string Email { get; set; }
 
         public List<Telefono> Telefonos { get; set; }
-        public Grupo Grupo { get; set; }
 
         public Contacto()
         {

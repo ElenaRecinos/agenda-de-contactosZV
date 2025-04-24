@@ -9,6 +9,26 @@ namespace DAL
 {
     public class ContactoDAL
     {
+        public bool ExisteContactoIgual(Contacto contacto)
+        {
+            using (var context = new AgendaDbContext())
+            {
+                var numeroTelefono = contacto.Telefonos.First().Numero.ToLower();
+                var tipoTelefono = contacto.Telefonos.First().Tipo.ToLower();
+
+                return context.Contactos
+                    .Include("Telefonos")
+                    .Any(c =>
+                        c.Nombre.ToLower() == contacto.Nombre.ToLower() &&
+                        c.Apellido.ToLower() == contacto.Apellido.ToLower() &&
+                        c.Email.ToLower() == contacto.Email.ToLower() &&
+                        c.Telefonos.Any(t =>
+                            t.Numero.ToLower() == numeroTelefono &&
+                            t.Tipo.ToLower() == tipoTelefono
+                        )
+                    );
+            }
+        }
         public void Insertar(Contacto contacto)
         {
             using (var context = new AgendaDbContext())
@@ -38,13 +58,23 @@ namespace DAL
         {
             using (var context = new AgendaDbContext())
             {
-                var existente = context.Contactos.Find(contacto.Id);
+                var existente = context.Contactos.Include("Telefonos").FirstOrDefault(c => c.Id == contacto.Id);
+
                 if (existente != null)
                 {
                     existente.Nombre = contacto.Nombre;
                     existente.Apellido = contacto.Apellido;
                     existente.Email = contacto.Email;
-                    existente.Telefonos = contacto.Telefonos;
+
+                    if (existente.Telefonos.Any())
+                    {
+                        var telefonoExistente = existente.Telefonos.First();
+
+                        var telefonoActualizado = contacto.Telefonos.First();
+
+                        telefonoExistente.Numero = telefonoActualizado.Numero;
+                        telefonoExistente.Tipo = telefonoActualizado.Tipo;
+                    }
 
                     context.SaveChanges();
                 }
@@ -61,6 +91,22 @@ namespace DAL
                     context.Contactos.Remove(contacto);
                     context.SaveChanges();
                 }
+            }
+        }
+
+        public List<Contacto> BuscarContactos(string criterio)
+        {
+            using (var context = new AgendaDbContext())
+            {
+                int id;
+                bool esId = int.TryParse(criterio, out id);
+
+                return context.Contactos
+                    .Include("Telefonos")
+                    .Where(c => (esId && c.Id == id) ||
+                                c.Nombre.Contains(criterio) ||
+                                c.Apellido.Contains(criterio))
+                    .ToList();
             }
         }
     }

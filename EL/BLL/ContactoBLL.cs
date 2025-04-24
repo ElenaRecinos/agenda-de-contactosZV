@@ -32,5 +32,19 @@ namespace BLL
             dal.Eliminar(id);
         }
 
+        public List<Contacto> BuscarContactos(string criterio)
+        {
+            return dal.BuscarContactos(criterio);
+        }
+
+        public Contacto ObtenerPorId(int id)
+        {
+            return dal.ObtenerPorId(id);
+        }
+        public bool ExisteContactoIgual(Contacto contacto)
+        {
+            return dal.ExisteContactoIgual(contacto);
+        }
+
     }
 }

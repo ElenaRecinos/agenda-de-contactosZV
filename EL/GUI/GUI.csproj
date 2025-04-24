@@ -64,6 +64,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormContacto.es-SV.resx">
+      <DependentUpon>FormContacto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormContacto.resx">
       <DependentUpon>FormContacto.cs</DependentUpon>
     </EmbeddedResource>

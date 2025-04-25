@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="AgendaDbContext.cs" />
     <Compile Include="ContactoDAL.cs" />
+    <Compile Include="GrupoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -22,6 +22,10 @@ namespace EL
         public Contacto()
         {
             Telefonos = new List<Telefono>();
+
         }
+
+        public int GrupoId { get; set; }    
+        public Grupo Grupo { get; set; }
     }
 }

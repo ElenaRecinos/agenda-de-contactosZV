@@ -23,6 +23,7 @@ namespace GUI
             InitializeComponent();
         }
 
+        //Muestra la información de contactos en DataGridView
         private void CargarContactos()
         {
             ContactoBLL servicio = new ContactoBLL();
@@ -35,7 +36,8 @@ namespace GUI
                 c.Apellido,
                 c.Email,
                 Numero = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Numero : "",
-                Tipo = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Tipo : ""
+                Tipo = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Tipo : "",
+                 Grupo = c.Grupo!= null ? c.Grupo.Nombre : "",
 
             }).ToList();
         }
@@ -151,7 +153,8 @@ namespace GUI
                         Nombre = txtNombre.Text,
                         Apellido = txtApellido.Text,
                         Email = txtEmail.Text,
-                        Telefonos = new List<EL.Telefono> { telefono }
+                        Telefonos = new List<EL.Telefono> { telefono },
+                        GrupoId = (int)cmbGrupos.SelectedValue
                     };
 
                     BLL.ContactoBLL servicio = new BLL.ContactoBLL();
@@ -188,6 +191,14 @@ namespace GUI
 
         private void FormContacto_Load(object sender, EventArgs e)
         {
+
+            // Cargar los grupos 
+            GrupoBLL grupoServicio = new GrupoBLL();
+            var grupos = grupoServicio.ObtenerTodos();
+
+            cmbGrupos.DataSource = grupos;
+            cmbGrupos.DisplayMember = "Nombre";  //  Muestra el nombre del grupo
+            cmbGrupos.ValueMember = "Id";        //  Guarda el Id del grupo
 
             // Placeholder para Nombre
             txtNombre.Text = "Ingrese el nombre...";
@@ -438,7 +449,11 @@ namespace GUI
             Numero = txtTelefono.Text,
             Tipo = cmbTipo.SelectedItem.ToString()
         }
-    }
+    },
+                      Grupo = new EL.Grupo
+                      {
+                          Id = (int)cmbGrupos.SelectedValue
+                      }
                 };
 
                 BLL.ContactoBLL servicio = new BLL.ContactoBLL();
@@ -689,6 +704,29 @@ namespace GUI
         private void txtNombre_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAgregarGrupo_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtNuevoGrupo.Text))
+            {
+                Grupo nuevoGrupo = new Grupo
+                {
+                    Nombre = txtNuevoGrupo.Text.Trim()
+                };
+
+                GrupoBLL grupoServicio = new GrupoBLL();
+                grupoServicio.Insertar(nuevoGrupo);
+
+                // Recarga el CmbBox
+                var grupos = grupoServicio.ObtenerTodos();
+                cmbGrupos.DataSource = grupos;
+                cmbGrupos.DisplayMember = "Nombre";
+                cmbGrupos.ValueMember = "Id";
+
+                txtNuevoGrupo.Clear();
+                MessageBox.Show("Grupo agregado con éxito.");
+            }
         }
     }
 }

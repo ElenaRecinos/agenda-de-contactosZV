@@ -19,7 +19,10 @@ namespace BLL
 
         public List<Contacto> ObtenerTodos()
         {
-            return dal.ObtenerTodos();
+            using (var context = new AgendaDbContext())
+            {
+                return context.Contactos.Include("Telefonos").Include("Grupo").ToList(); 
+            }
         }
 
         public void Actualizar(Contacto contacto)

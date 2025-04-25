@@ -48,6 +48,9 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.toolTipBuscar = new System.Windows.Forms.ToolTip(this.components);
+            this.cmbGrupos = new System.Windows.Forms.ComboBox();
+            this.txtNuevoGrupo = new System.Windows.Forms.TextBox();
+            this.btnAgregarGrupo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContactos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +60,6 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Name = "label1";
-            this.toolTipBuscar.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
@@ -66,7 +68,6 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Name = "label2";
-            this.toolTipBuscar.SetToolTip(this.label2, resources.GetString("label2.ToolTip"));
             // 
             // label3
             // 
@@ -74,7 +75,6 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label3.Name = "label3";
-            this.toolTipBuscar.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
             // 
             // label4
             // 
@@ -82,46 +82,41 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label4.Name = "label4";
-            this.toolTipBuscar.SetToolTip(this.label4, resources.GetString("label4.ToolTip"));
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // button1
             // 
-            resources.ApplyResources(this.button1, "button1");
             this.button1.BackColor = System.Drawing.Color.LimeGreen;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.button1, "button1");
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button1.Name = "button1";
-            this.toolTipBuscar.SetToolTip(this.button1, resources.GetString("button1.ToolTip"));
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnCancelar
             // 
-            resources.ApplyResources(this.btnCancelar, "btnCancelar");
             this.btnCancelar.BackColor = System.Drawing.Color.MintCream;
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.btnCancelar, "btnCancelar");
             this.btnCancelar.Name = "btnCancelar";
-            this.toolTipBuscar.SetToolTip(this.btnCancelar, resources.GetString("btnCancelar.ToolTip"));
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // dgvContactos
             // 
-            resources.ApplyResources(this.dgvContactos, "dgvContactos");
             this.dgvContactos.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvContactos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvContactos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dgvContactos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dgvContactos, "dgvContactos");
             this.dgvContactos.Name = "dgvContactos";
-            this.toolTipBuscar.SetToolTip(this.dgvContactos, resources.GetString("dgvContactos.ToolTip"));
             this.dgvContactos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // txtApellido
             // 
             resources.ApplyResources(this.txtApellido, "txtApellido");
             this.txtApellido.Name = "txtApellido";
-            this.toolTipBuscar.SetToolTip(this.txtApellido, resources.GetString("txtApellido.ToolTip"));
             this.txtApellido.TextChanged += new System.EventHandler(this.txtApellido_TextChanged);
             this.txtApellido.Enter += new System.EventHandler(this.txtApellido_Enter);
             this.txtApellido.Leave += new System.EventHandler(this.txtApellido_Leave);
@@ -130,7 +125,6 @@
             // 
             resources.ApplyResources(this.txtEmail, "txtEmail");
             this.txtEmail.Name = "txtEmail";
-            this.toolTipBuscar.SetToolTip(this.txtEmail, resources.GetString("txtEmail.ToolTip"));
             this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
             this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
@@ -138,57 +132,51 @@
             // 
             resources.ApplyResources(this.txtTelefono, "txtTelefono");
             this.txtTelefono.Name = "txtTelefono";
-            this.toolTipBuscar.SetToolTip(this.txtTelefono, resources.GetString("txtTelefono.ToolTip"));
             this.txtTelefono.Enter += new System.EventHandler(this.txtTelefono_Enter);
             this.txtTelefono.Leave += new System.EventHandler(this.txtTelefono_Leave);
             // 
             // cmbTipo
             // 
-            resources.ApplyResources(this.cmbTipo, "cmbTipo");
             this.cmbTipo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbTipo.FormattingEnabled = true;
+            resources.ApplyResources(this.cmbTipo, "cmbTipo");
             this.cmbTipo.Name = "cmbTipo";
-            this.toolTipBuscar.SetToolTip(this.cmbTipo, resources.GetString("cmbTipo.ToolTip"));
             this.cmbTipo.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // btnActualizar
             // 
-            resources.ApplyResources(this.btnActualizar, "btnActualizar");
             this.btnActualizar.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.btnActualizar, "btnActualizar");
             this.btnActualizar.Name = "btnActualizar";
-            this.toolTipBuscar.SetToolTip(this.btnActualizar, resources.GetString("btnActualizar.ToolTip"));
             this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnEliminar
             // 
-            resources.ApplyResources(this.btnEliminar, "btnEliminar");
             this.btnEliminar.BackColor = System.Drawing.Color.LightCoral;
             this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.btnEliminar, "btnEliminar");
             this.btnEliminar.Name = "btnEliminar";
-            this.toolTipBuscar.SetToolTip(this.btnEliminar, resources.GetString("btnEliminar.ToolTip"));
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // txtNombre
             // 
-            resources.ApplyResources(this.txtNombre, "txtNombre");
             this.txtNombre.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.txtNombre, "txtNombre");
             this.txtNombre.Name = "txtNombre";
-            this.toolTipBuscar.SetToolTip(this.txtNombre, resources.GetString("txtNombre.ToolTip"));
             this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             this.txtNombre.Enter += new System.EventHandler(this.txtNombre_Enter);
             this.txtNombre.Leave += new System.EventHandler(this.txtNombre_Leave);
             // 
             // btnRecuperar
             // 
-            resources.ApplyResources(this.btnRecuperar, "btnRecuperar");
             this.btnRecuperar.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.btnRecuperar.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.btnRecuperar, "btnRecuperar");
             this.btnRecuperar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnRecuperar.Name = "btnRecuperar";
-            this.toolTipBuscar.SetToolTip(this.btnRecuperar, resources.GetString("btnRecuperar.ToolTip"));
             this.btnRecuperar.UseVisualStyleBackColor = false;
             this.btnRecuperar.Click += new System.EventHandler(this.btnRecuperar_Click);
             // 
@@ -203,11 +191,10 @@
             // 
             // progressBar1
             // 
-            resources.ApplyResources(this.progressBar1, "progressBar1");
             this.progressBar1.Cursor = System.Windows.Forms.Cursors.AppStarting;
+            resources.ApplyResources(this.progressBar1, "progressBar1");
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.toolTipBuscar.SetToolTip(this.progressBar1, resources.GetString("progressBar1.ToolTip"));
             // 
             // toolTipBuscar
             // 
@@ -215,10 +202,34 @@
             this.toolTipBuscar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.toolTipBuscar.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // cmbGrupos
+            // 
+            this.cmbGrupos.FormattingEnabled = true;
+            resources.ApplyResources(this.cmbGrupos, "cmbGrupos");
+            this.cmbGrupos.Name = "cmbGrupos";
+            // 
+            // txtNuevoGrupo
+            // 
+            resources.ApplyResources(this.txtNuevoGrupo, "txtNuevoGrupo");
+            this.txtNuevoGrupo.Name = "txtNuevoGrupo";
+            // 
+            // btnAgregarGrupo
+            // 
+            this.btnAgregarGrupo.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.btnAgregarGrupo.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.btnAgregarGrupo, "btnAgregarGrupo");
+            this.btnAgregarGrupo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAgregarGrupo.Name = "btnAgregarGrupo";
+            this.btnAgregarGrupo.UseVisualStyleBackColor = false;
+            this.btnAgregarGrupo.Click += new System.EventHandler(this.btnAgregarGrupo_Click);
+            // 
             // FormContacto
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnAgregarGrupo);
+            this.Controls.Add(this.txtNuevoGrupo);
+            this.Controls.Add(this.cmbGrupos);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.btnRecuperar);
@@ -238,7 +249,6 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormContacto";
-            this.toolTipBuscar.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.Load += new System.EventHandler(this.FormContacto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvContactos)).EndInit();
             this.ResumeLayout(false);
@@ -266,5 +276,8 @@
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ToolTip toolTipBuscar;
+        private System.Windows.Forms.ComboBox cmbGrupos;
+        private System.Windows.Forms.TextBox txtNuevoGrupo;
+        private System.Windows.Forms.Button btnAgregarGrupo;
     }
 }

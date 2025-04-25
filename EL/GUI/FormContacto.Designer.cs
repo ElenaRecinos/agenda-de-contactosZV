@@ -51,6 +51,7 @@
             this.cmbGrupos = new System.Windows.Forms.ComboBox();
             this.txtNuevoGrupo = new System.Windows.Forms.TextBox();
             this.btnAgregarGrupo = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContactos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -204,7 +205,10 @@
             // 
             // cmbGrupos
             // 
+            this.cmbGrupos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbGrupos.FormattingEnabled = true;
+            this.cmbGrupos.Items.AddRange(new object[] {
+            resources.GetString("cmbGrupos.Items")});
             resources.ApplyResources(this.cmbGrupos, "cmbGrupos");
             this.cmbGrupos.Name = "cmbGrupos";
             // 
@@ -212,6 +216,8 @@
             // 
             resources.ApplyResources(this.txtNuevoGrupo, "txtNuevoGrupo");
             this.txtNuevoGrupo.Name = "txtNuevoGrupo";
+            this.txtNuevoGrupo.Enter += new System.EventHandler(this.txtNuevoGrupo_Enter);
+            this.txtNuevoGrupo.Leave += new System.EventHandler(this.txtNuevoGrupo_Leave);
             // 
             // btnAgregarGrupo
             // 
@@ -223,10 +229,18 @@
             this.btnAgregarGrupo.UseVisualStyleBackColor = false;
             this.btnAgregarGrupo.Click += new System.EventHandler(this.btnAgregarGrupo_Click);
             // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label5.Name = "label5";
+            // 
             // FormContacto
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnAgregarGrupo);
             this.Controls.Add(this.txtNuevoGrupo);
             this.Controls.Add(this.cmbGrupos);
@@ -279,5 +293,6 @@
         private System.Windows.Forms.ComboBox cmbGrupos;
         private System.Windows.Forms.TextBox txtNuevoGrupo;
         private System.Windows.Forms.Button btnAgregarGrupo;
+        private System.Windows.Forms.Label label5;
     }
 }

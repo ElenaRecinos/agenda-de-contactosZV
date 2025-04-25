@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using BLL;
 using EL;
 using DAL;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.ComponentModel.DataAnnotations;
 
 namespace GUI
 {
@@ -37,7 +39,7 @@ namespace GUI
                 c.Email,
                 Numero = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Numero : "",
                 Tipo = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Tipo : "",
-                 Grupo = c.Grupo!= null ? c.Grupo.Nombre : "",
+                Grupo = c.Grupo != null ? c.Grupo.Nombre : "",
 
             }).ToList();
         }
@@ -52,10 +54,12 @@ namespace GUI
 
         }
 
+        //Botón de guardar...
         private async void button1_Click(object sender, EventArgs e)
         {
             try
             {
+
                 bool hayError = false;
 
                 //  Validar txtNombre
@@ -97,6 +101,8 @@ namespace GUI
                     txtEmail.ForeColor = Color.Black;
                 }
 
+
+
                 //  Validar txtTelefono
                 if (string.IsNullOrWhiteSpace(txtTelefono.Text) || txtTelefono.Text == "Ingrese el teléfono...")
                 {
@@ -118,10 +124,27 @@ namespace GUI
 
                 if (hayError)
                 {
-                    MessageBox.Show("¡Hay cuadros de texto vacíos o incompletos!");
+                    MessageBox.Show("¡Hay parámetros de texto vacíos o incompletos!");
                     return;
                 }
 
+                // Validar el Email
+                if (!txtEmail.Text.Contains("@"))
+                {
+                    txtEmail.BackColor = Color.IndianRed;
+                    txtEmail.ForeColor = Color.White;
+                    txtEmail.Text = "Hace falta @.";
+                    return;
+                }
+
+                // Validar que el Teléfono solo contenga números
+                if (!System.Text.RegularExpressions.Regex.IsMatch(txtTelefono.Text, @"^[0-9+\-]+$"))
+                {
+                    txtTelefono.BackColor = Color.IndianRed;
+                    txtTelefono.ForeColor = Color.White;
+                    txtTelefono.Text = "Solo caracteres numéricos, '-' o '+'";
+                    return;
+                }
                 // barra de progreso
 
                 this.Cursor = Cursors.WaitCursor;
@@ -147,6 +170,13 @@ namespace GUI
                         Numero = txtTelefono.Text,
                         Tipo = cmbTipo.SelectedItem.ToString()
                     };
+
+                    //  Validar si hay grupo seleccionado
+                    if (cmbGrupos.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Debe crear al menos un grupo antes de guardar el contacto.");
+                        return;
+                    }
 
                     EL.Contacto contacto = new EL.Contacto
                     {
@@ -181,7 +211,7 @@ namespace GUI
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -192,7 +222,8 @@ namespace GUI
         private void FormContacto_Load(object sender, EventArgs e)
         {
 
-            // Cargar los grupos 
+
+            // Cargar los grupos y otros comportamientos al iniciar.
             GrupoBLL grupoServicio = new GrupoBLL();
             var grupos = grupoServicio.ObtenerTodos();
 
@@ -220,23 +251,39 @@ namespace GUI
             txtBuscar.Text = "🔍||Búsqueda...";
             txtBuscar.ForeColor = Color.Gray;
 
+            // Placeholder para Buscar
+            txtNuevoGrupo.Text = "Ingrese nuevo grupo...";
+            txtNuevoGrupo.ForeColor = Color.Gray;
+
             cmbTipo.Items.Clear();
-            cmbTipo.Items.AddRange(new string[] { "Móvil", "Casa", "Trabajo", "Empresa" });
+            cmbTipo.Items.AddRange(new string[] { "Móvil", "Casa", "Trabajo", "Empresa", "Fax", "Emergencia", "VoIP", "Otro" });
             cmbTipo.SelectedIndex = 0;
+
+            if (cmbGrupos.Items.Count > 0)
+            {
+                cmbGrupos.SelectedIndex = 0;
+            }
+            else
+            {
+                cmbGrupos.SelectedIndex = -1;
+            }
 
             CargarContactos();
         }
 
+        //botón Cancelar
         private async void btnCancelar_Click(object sender, EventArgs e)
         {
-  
+
             txtNombre.Clear();
             txtApellido.Clear();
             txtEmail.Clear();
             txtTelefono.Clear();
             txtBuscar.Clear();
+            txtNuevoGrupo.Clear();
 
             cmbTipo.SelectedIndex = 0;
+            cmbGrupos.SelectedIndex = 0;
 
             txtNombre.Text = "Ingrese el nombre...";
             txtNombre.ForeColor = Color.Gray;
@@ -256,6 +303,10 @@ namespace GUI
 
             txtBuscar.Text = "🔍||Búsqueda...";
             txtBuscar.ForeColor = Color.Gray;
+
+            txtNuevoGrupo.Text = "Ingrese nuevo grupo...";
+            txtNuevoGrupo.BackColor = Color.White;
+            txtNuevoGrupo.ForeColor = Color.Gray;
 
             // control de barra de progreso
 
@@ -278,18 +329,19 @@ namespace GUI
 
 
                 ContactoBLL servicio = new ContactoBLL();
-            var lista = servicio.ObtenerTodos();
+                var lista = servicio.ObtenerTodos();
 
-            dgvContactos.DataSource = lista.Select(c => new
-            {
-                c.Id,
-                c.Nombre,
-                c.Apellido,
-                c.Email,
-                Numero = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Numero : "",
-                Tipo = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Tipo : ""
+                dgvContactos.DataSource = lista.Select(c => new
+                {
+                    c.Id,
+                    c.Nombre,
+                    c.Apellido,
+                    c.Email,
+                    Numero = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Numero : "",
+                    Tipo = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Tipo : "",
+                    Grupo = c.Grupo != null ? c.Grupo.Nombre : "",
 
-            }).ToList();
+                }).ToList();
 
             }
         }
@@ -435,6 +487,7 @@ namespace GUI
                 progressBar1.Visible = false;
                 this.Cursor = Cursors.Default;
 
+
                 //  Crea el contacto actualizado
                 var contacto = new EL.Contacto
                 {
@@ -443,6 +496,7 @@ namespace GUI
                     Apellido = txtApellido.Text,
                     Email = txtEmail.Text,
                     Telefonos = new List<EL.Telefono>
+
     {
         new EL.Telefono
         {
@@ -450,10 +504,8 @@ namespace GUI
             Tipo = cmbTipo.SelectedItem.ToString()
         }
     },
-                      Grupo = new EL.Grupo
-                      {
-                          Id = (int)cmbGrupos.SelectedValue
-                      }
+                    GrupoId = (int)cmbGrupos.SelectedValue
+
                 };
 
                 BLL.ContactoBLL servicio = new BLL.ContactoBLL();
@@ -483,6 +535,24 @@ namespace GUI
 
                 txtTelefono.Text = "Ingrese el teléfono...";
                 txtTelefono.ForeColor = Color.Gray;
+
+                txtBuscar.Text = "🔍||Búsqueda...";
+                txtBuscar.ForeColor = Color.Gray;
+
+                var lista = servicio.ObtenerTodos();
+
+                dgvContactos.DataSource = lista.Select(c => new
+                {
+                    c.Id,
+                    c.Nombre,
+                    c.Apellido,
+                    c.Email,
+                    Numero = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Numero : "",
+                    Tipo = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Tipo : "",
+                    Grupo = c.Grupo != null ? c.Grupo.Nombre : "",
+
+                }).ToList();
+
 
             }
         }
@@ -533,6 +603,12 @@ namespace GUI
                 txtEmail.ForeColor = Color.Black;
                 txtEmail.BackColor = Color.White;
             }
+            if (txtEmail.Text == "Hace falta @.")
+            {
+                txtEmail.Text = "";
+                txtEmail.ForeColor = Color.Black;
+                txtEmail.BackColor = Color.White;
+            }
         }
 
         private void txtEmail_Leave(object sender, EventArgs e)
@@ -546,6 +622,13 @@ namespace GUI
         private void txtTelefono_Enter(object sender, EventArgs e)
         {
             if (txtTelefono.Text == "Ingrese el teléfono...")
+            {
+                txtTelefono.Text = "";
+                txtTelefono.ForeColor = Color.Black;
+                txtTelefono.BackColor = Color.White;
+            }
+
+            if (txtTelefono.Text == "Solo caracteres numéricos, '-' o '+'")
             {
                 txtTelefono.Text = "";
                 txtTelefono.ForeColor = Color.Black;
@@ -580,17 +663,20 @@ namespace GUI
                 //cargar todos los contactos
                 ContactoBLL servicio = new ContactoBLL();
                 var lista = servicio.ObtenerTodos();
-                    dgvContactos.DataSource = lista.Select(c => new
-                    {
-                        c.Id,
-                        c.Nombre,
-                        c.Apellido,
-                        c.Email,
-                        Numero = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Numero : "",
-                        Tipo = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Tipo : ""
-                    }).ToList();
-                }
+                dgvContactos.DataSource = lista.Select(c => new
+                {
+                    c.Id,
+                    c.Nombre,
+                    c.Apellido,
+                    c.Email,
+                    Numero = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Numero : "",
+                    Tipo = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Tipo : "",
+                    Grupo = c.Grupo != null ? c.Grupo.Nombre : "",
+                }).ToList();
             }
+        }
+
+
 
         private async void btnRecuperar_Click(object sender, EventArgs e)
         {
@@ -626,10 +712,16 @@ namespace GUI
 
                 // Aplica color original al texto
                 txtNombre.ForeColor = Color.Black;
+                txtNombre.BackColor = Color.White;
                 txtApellido.ForeColor = Color.Black;
+                txtApellido.BackColor = Color.White;
                 txtEmail.ForeColor = Color.Black;
+                txtEmail.BackColor = Color.White;
                 txtTelefono.ForeColor = Color.Black;
+                txtTelefono.BackColor = Color.White;
                 txtBuscar.ForeColor = Color.Gray;
+                txtNuevoGrupo.ForeColor = Color.Gray;
+                txtNuevoGrupo.BackColor = Color.White;
 
 
                 // Llenar los TextBox
@@ -643,8 +735,18 @@ namespace GUI
                     txtTelefono.Text = contacto.Telefonos.FirstOrDefault().Numero;
                     cmbTipo.SelectedItem = contacto.Telefonos.FirstOrDefault().Tipo;
                 }
+
+                if (contacto.Grupo != null)
+                {
+                    cmbGrupos.SelectedValue = contacto.Grupo.Id;
+                }
+                else
+                {
+                    cmbGrupos.SelectedIndex = -1;
+                }
+
                 contactoSeleccionadoId = contacto.Id; //  Guarda el Id del contacto
-                MessageBox.Show("¡Contacto recuperado! ID:" + contactoSeleccionadoId );
+                MessageBox.Show("¡Contacto recuperado! ID:" + contactoSeleccionadoId);
 
                 // Recarga Contactos
                 var lista = servicio.ObtenerTodos();
@@ -655,7 +757,8 @@ namespace GUI
                     c.Apellido,
                     c.Email,
                     Numero = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Numero : "",
-                    Tipo = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Tipo : ""
+                    Tipo = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Tipo : "",
+                    Grupo = c.Grupo != null ? c.Grupo.Nombre : "",
                 }).ToList();
             }
         }
@@ -665,6 +768,7 @@ namespace GUI
             string criterio = txtBuscar.Text.Trim();
 
             ContactoBLL servicio = new ContactoBLL();
+
 
             if (string.IsNullOrWhiteSpace(criterio))
             {
@@ -677,7 +781,8 @@ namespace GUI
                     c.Apellido,
                     c.Email,
                     Numero = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Numero : "",
-                    Tipo = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Tipo : ""
+                    Tipo = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Tipo : "",
+                    Grupo = c.Grupo != null ? c.Grupo.Nombre : ""
                 }).ToList();
             }
             else
@@ -691,14 +796,17 @@ namespace GUI
                     c.Apellido,
                     c.Email,
                     Numero = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Numero : "",
-                    Tipo = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Tipo : ""
+                    Tipo = c.Telefonos.FirstOrDefault() != null ? c.Telefonos.FirstOrDefault().Tipo : "",
+                    Grupo = c.Grupo != null ? c.Grupo.Nombre : ""
+
+
                 }).ToList();
             }
         }
 
         private void txtApellido_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void txtNombre_TextChanged(object sender, EventArgs e)
@@ -706,10 +814,39 @@ namespace GUI
 
         }
 
+        private void txtNuevoGrupo_Enter(object sender, EventArgs e)
+        {
+            if (txtNuevoGrupo.Text == "Ingrese nuevo grupo...")
+            {
+                txtNuevoGrupo.Text = "";
+                txtNuevoGrupo.ForeColor = Color.Black;
+                txtNuevoGrupo.BackColor = Color.White;
+            }
+        }
+        private void txtNuevoGrupo_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNuevoGrupo.Text))
+            {
+                txtNuevoGrupo.Text = "Ingrese nuevo grupo...";
+                txtNuevoGrupo.ForeColor = Color.Gray;
+            }
+        }
+
+        //Botón agregar Grupos
         private void btnAgregarGrupo_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtNuevoGrupo.Text))
+            if (txtNuevoGrupo.Text == "Ingrese nuevo grupo...")
             {
+                txtNuevoGrupo.BackColor = Color.IndianRed;
+                txtNuevoGrupo.ForeColor = Color.White;
+                return;
+            }
+
+            else if (!string.IsNullOrWhiteSpace(txtNuevoGrupo.Text))
+            {
+                txtNuevoGrupo.BackColor = Color.White;
+                txtNuevoGrupo.ForeColor = Color.Black;
+
                 Grupo nuevoGrupo = new Grupo
                 {
                     Nombre = txtNuevoGrupo.Text.Trim()

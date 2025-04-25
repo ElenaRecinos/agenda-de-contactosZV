@@ -22,6 +22,7 @@ namespace DAL
                         c.Nombre.ToLower() == contacto.Nombre.ToLower() &&
                         c.Apellido.ToLower() == contacto.Apellido.ToLower() &&
                         c.Email.ToLower() == contacto.Email.ToLower() &&
+                         c.GrupoId == contacto.GrupoId &&
                         c.Telefonos.Any(t =>
                             t.Numero.ToLower() == numeroTelefono &&
                             t.Tipo.ToLower() == tipoTelefono
@@ -29,6 +30,7 @@ namespace DAL
                     );
             }
         }
+
         public void Insertar(Contacto contacto)
         {
             using (var context = new AgendaDbContext())
@@ -42,7 +44,7 @@ namespace DAL
         {
             using (var context = new AgendaDbContext())
             {
-                return context.Contactos.Include("Telefonos").ToList();
+                return context.Contactos.Include("Telefonos").Include("Grupo").ToList();
             }
         }
 
@@ -50,7 +52,7 @@ namespace DAL
         {
             using (var context = new AgendaDbContext())
             {
-                return context.Contactos.Include("Telefonos").FirstOrDefault(c => c.Id == id);
+                return context.Contactos.Include("Telefonos").Include("Grupo").FirstOrDefault(c => c.Id == id);
             }
         }
 
@@ -65,6 +67,7 @@ namespace DAL
                     existente.Nombre = contacto.Nombre;
                     existente.Apellido = contacto.Apellido;
                     existente.Email = contacto.Email;
+                    existente.GrupoId = contacto.GrupoId;
 
                     if (existente.Telefonos.Any())
                     {
@@ -102,10 +105,10 @@ namespace DAL
                 bool esId = int.TryParse(criterio, out id);
 
                 return context.Contactos
-                    .Include("Telefonos")
+                    .Include("Telefonos").Include("Grupo")
                     .Where(c => (esId && c.Id == id) ||
                                 c.Nombre.Contains(criterio) ||
-                                c.Apellido.Contains(criterio))
+                                c.Apellido.Contains(criterio))                           
                     .ToList();
             }
         }

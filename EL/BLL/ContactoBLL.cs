@@ -42,7 +42,11 @@ namespace BLL
 
         public Contacto ObtenerPorId(int id)
         {
-            return dal.ObtenerPorId(id);
+            using (var context = new AgendaDbContext())
+            {
+                return context.Contactos.Include("Telefonos").Include("Grupo").FirstOrDefault(c => c.Id == id);
+            }
+
         }
         public bool ExisteContactoIgual(Contacto contacto)
         {

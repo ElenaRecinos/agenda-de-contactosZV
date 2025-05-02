@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using EL;
 using DAL;
+using System.IO;
+
 
 namespace BLL
 {
@@ -52,5 +54,21 @@ namespace BLL
             return _dal.ExisteContactoIgual(contacto);
         }
 
+        //Exportar datos registrados 
+        public void ExportarContactosCSV(string filePath) 
+        {
+            var contactos = ObtenerTodos();
+
+            using (var writer = new StreamWriter(filePath))
+            {
+                writer.WriteLine("Id,Nombre,Apellido,Email,Telefono,Tipo,Grupo");
+
+                foreach (var c in contactos)
+                {
+                    var telefono = c.Telefonos.FirstOrDefault();
+                    writer.WriteLine($"{c.Id},{c.Nombre},{c.Apellido},{c.Email},{telefono?.Numero},{telefono?.Tipo},{c.Grupo?.Nombre}");
+                }
+            }
+        }
     }
 }

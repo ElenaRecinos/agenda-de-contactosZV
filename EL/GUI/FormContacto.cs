@@ -13,6 +13,7 @@ using EL;
 using DAL;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Remoting.Contexts;
 
 namespace GUI
 {
@@ -23,10 +24,15 @@ namespace GUI
         private readonly ContactoBLL _contactoBLL;
         private readonly GrupoBLL _grupoBLL;
 
-        public FormContacto()
+        //Constructor vacío que delega al parametrizado
+        public FormContacto() : this(new AgendaDbContext())
+        {
+        }
+
+        public FormContacto(AgendaDbContext context)
         {
             InitializeComponent();
-            _context = new AgendaDbContext();
+            _context = context;
             _contactoBLL = new ContactoBLL(_context);
             _grupoBLL = new GrupoBLL(_context);
         }

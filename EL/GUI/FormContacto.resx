@@ -319,7 +319,7 @@
     <value>Microsoft YaHei, 8.25pt</value>
   </data>
   <data name="btnRecuperar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>466, 9</value>
+    <value>465, 12</value>
   </data>
   <data name="btnRecuperar.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -342,11 +342,8 @@
   <data name="&gt;&gt;btnRecuperar.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <metadata name="toolTipBuscar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>57, 14</value>
-  </metadata>
   <data name="txtBuscar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>65, 12</value>
+    <value>64, 12</value>
   </data>
   <data name="txtBuscar.Size" type="System.Drawing.Size, System.Drawing">
     <value>395, 20</value>
@@ -354,6 +351,9 @@
   <data name="txtBuscar.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
   </data>
+  <metadata name="toolTipBuscar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>57, 14</value>
+  </metadata>
   <data name="txtBuscar.ToolTip" xml:space="preserve">
     <value>"Buscar contacto por ID, Nombre o Apellido. Escribe para filtrar los resultados en tiempo real."</value>
   </data>
@@ -369,9 +369,6 @@
   <data name="&gt;&gt;txtBuscar.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <metadata name="toolTipBuscar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>57, 14</value>
-  </metadata>
   <data name="cmbGrupos.Items" xml:space="preserve">
     <value>Amigo</value>
   </data>

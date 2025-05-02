@@ -10,47 +10,46 @@ namespace BLL
 {
     public class ContactoBLL
     {
-        private ContactoDAL dal = new ContactoDAL();
+        private readonly ContactoDAL _dal;
+
+        public ContactoBLL(AgendaDbContext context)
+        {
+            _dal = new ContactoDAL(context);
+        }
 
         public void Insertar(Contacto contacto)
         {
-            dal.Insertar(contacto);
+            _dal.Insertar(contacto);
         }
 
         public List<Contacto> ObtenerTodos()
         {
-            using (var context = new AgendaDbContext())
-            {
-                return context.Contactos.Include("Telefonos").Include("Grupo").ToList(); 
-            }
+            return _dal.ObtenerTodos();
         }
 
         public void Actualizar(Contacto contacto)
         {
-            dal.Actualizar(contacto);
+            _dal.Actualizar(contacto);
         }
 
         public void Eliminar(int id)
         {
-            dal.Eliminar(id);
+            _dal.Eliminar(id);
         }
 
         public List<Contacto> BuscarContactos(string criterio)
         {
-            return dal.BuscarContactos(criterio);
+            return _dal.BuscarContactos(criterio);
         }
 
         public Contacto ObtenerPorId(int id)
         {
-            using (var context = new AgendaDbContext())
-            {
-                return context.Contactos.Include("Telefonos").Include("Grupo").FirstOrDefault(c => c.Id == id);
-            }
-
+            return _dal.ObtenerPorId(id);
         }
+
         public bool ExisteContactoIgual(Contacto contacto)
         {
-            return dal.ExisteContactoIgual(contacto);
+            return _dal.ExisteContactoIgual(contacto);
         }
 
     }

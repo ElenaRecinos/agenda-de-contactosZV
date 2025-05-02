@@ -10,19 +10,24 @@ namespace BLL
 {
    public class GrupoBLL
       {
-          GrupoDAL dal = new GrupoDAL();
+        private readonly GrupoDAL _dal;
 
-          //  Insertar grupo
-          public void Insertar(Grupo grupo)
-            {
-                dal.Insertar(grupo);
-            }
-
-          //  Obtener todos los grupos
-            public List<Grupo> ObtenerTodos()
-            {
-                return dal.ObtenerTodos();
-            }
-      }
+        public GrupoBLL(AgendaDbContext context)
+        {
+            _dal = new GrupoDAL(context);
+        }
+   
+        // Inserta un nuevo grupo.
+        public void Insertar(Grupo grupo)
+        {
+            _dal.Insertar(grupo);
+        }
+ 
+        /// Obtiene todos los grupos.
+        public List<Grupo> ObtenerTodos()
+        {
+            return _dal.ObtenerTodos();
+        }
+    }
     
 }

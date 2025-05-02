@@ -9,23 +9,25 @@ namespace DAL
 {
     public class GrupoDAL
     {
+      
+        private readonly AgendaDbContext _context;
+
+        public GrupoDAL(AgendaDbContext context)
+        {
+            _context = context;
+        }
+
         // Insertar grupo
         public void Insertar(Grupo grupo)
         {
-            using (var context = new AgendaDbContext())
-            {
-                context.Grupos.Add(grupo);
-                context.SaveChanges();
-            }
+            _context.Grupos.Add(grupo);
+            _context.SaveChanges();
         }
 
         //  Lista a todos los grupos
         public List<Grupo> ObtenerTodos()
         {
-            using (var context = new AgendaDbContext())
-            {
-                return context.Grupos.ToList();
-            }
+            return _context.Grupos.ToList();
         }
     }
 }

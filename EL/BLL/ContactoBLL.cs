@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using EL;
 using DAL;
-using System.IO;
+using System.Runtime.Remoting.Contexts;
+using BLL.Infraestructura;
 
 
 namespace BLL
@@ -13,10 +14,12 @@ namespace BLL
     public class ContactoBLL
     {
         private readonly ContactoDAL _dal;
+        private readonly GrupoDAL _grupoDAL;
 
         public ContactoBLL(AgendaDbContext context)
         {
             _dal = new ContactoDAL(context);
+            _grupoDAL = new GrupoDAL(context);
         }
 
         public void Insertar(Contacto contacto)
@@ -55,20 +58,18 @@ namespace BLL
         }
 
         //Exportar datos registrados 
-        public void ExportarContactosCSV(string filePath) 
+        public void ExportarContactosCSV(string filePath)
         {
             var contactos = ObtenerTodos();
+            var exportador = new ExportadorContactos();
+            exportador.ExportarCSV(contactos, filePath);
+        }
 
-            using (var writer = new StreamWriter(filePath))
-            {
-                writer.WriteLine("Id,Nombre,Apellido,Email,Telefono,Tipo,Grupo");
-
-                foreach (var c in contactos)
-                {
-                    var telefono = c.Telefonos.FirstOrDefault();
-                    writer.WriteLine($"{c.Id},{c.Nombre},{c.Apellido},{c.Email},{telefono?.Numero},{telefono?.Tipo},{c.Grupo?.Nombre}");
-                }
-            }
+        public int ImportarContactos(string filePath)
+        {
+            var importador = new ImportadorContactos(_dal, _grupoDAL);
+            int duplicados = importador.ImportarContactos(filePath);
+            return duplicados;
         }
     }
 }

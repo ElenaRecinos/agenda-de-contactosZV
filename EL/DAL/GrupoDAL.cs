@@ -9,7 +9,7 @@ namespace DAL
 {
     public class GrupoDAL
     {
-      
+
         private readonly AgendaDbContext _context;
 
         public GrupoDAL(AgendaDbContext context)
@@ -29,5 +29,11 @@ namespace DAL
         {
             return _context.Grupos.ToList();
         }
+
+        public Grupo ObtenerGrupoPorNombre(string nombre)
+        {
+            return _context.Grupos.FirstOrDefault(g => g.Nombre.ToLower() == nombre.ToLower());
+        }
+
     }
 }

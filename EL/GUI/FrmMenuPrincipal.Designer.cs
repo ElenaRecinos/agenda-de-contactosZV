@@ -29,44 +29,41 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionarContactosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaDeGruposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblContRegis = new System.Windows.Forms.Label();
+            this.lblGrupRegis = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnGestionarContactos = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.lblServidor = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.chartGrupos = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lblHora = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartGrupos)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -87,9 +84,8 @@
             this.gestionarContactosToolStripMenuItem,
             this.exportarToolStripMenuItem,
             this.importarToolStripMenuItem,
-            this.cerrarSesiónToolStripMenuItem,
-            this.salirToolStripMenuItem,
-            this.salirToolStripMenuItem1});
+            this.cerrarSesionToolStripMenuItem,
+            this.salirToolStripMenuItem});
             this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
             this.inicioToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.inicioToolStripMenuItem.Text = "Inicio";
@@ -115,32 +111,32 @@
             this.importarToolStripMenuItem.Text = "Importar...";
             this.importarToolStripMenuItem.Click += new System.EventHandler(this.importarToolStripMenuItem_Click);
             // 
-            // cerrarSesiónToolStripMenuItem
+            // cerrarSesionToolStripMenuItem
             // 
-            this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.cerrarSesiónToolStripMenuItem.Text = "Imprimir";
-            this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
+            this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
+            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.cerrarSesionToolStripMenuItem.Text = "Cerrar sesion";
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.salirToolStripMenuItem.Text = "Cerrar sesión";
+            this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
-            // 
-            // salirToolStripMenuItem1
-            // 
-            this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
-            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(188, 22);
-            this.salirToolStripMenuItem1.Text = "Salir";
-            this.salirToolStripMenuItem1.Click += new System.EventHandler(this.salirToolStripMenuItem1_Click);
             // 
             // configuraciónToolStripMenuItem
             // 
+            this.configuraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.listaDeGruposToolStripMenuItem});
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
+            // 
+            // listaDeGruposToolStripMenuItem
+            // 
+            this.listaDeGruposToolStripMenuItem.Name = "listaDeGruposToolStripMenuItem";
+            this.listaDeGruposToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listaDeGruposToolStripMenuItem.Text = "Lista de Grupos";
             // 
             // ayudaToolStripMenuItem
             // 
@@ -179,23 +175,23 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Grupos  registrados:";
             // 
-            // label4
+            // lblContRegis
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 169);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(14, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "X";
+            this.lblContRegis.AutoSize = true;
+            this.lblContRegis.Location = new System.Drawing.Point(26, 169);
+            this.lblContRegis.Name = "lblContRegis";
+            this.lblContRegis.Size = new System.Drawing.Size(14, 13);
+            this.lblContRegis.TabIndex = 4;
+            this.lblContRegis.Text = "X";
             // 
-            // label5
+            // lblGrupRegis
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(228, 169);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(14, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Y";
+            this.lblGrupRegis.AutoSize = true;
+            this.lblGrupRegis.Location = new System.Drawing.Point(228, 169);
+            this.lblGrupRegis.Name = "lblGrupRegis";
+            this.lblGrupRegis.Size = new System.Drawing.Size(14, 13);
+            this.lblGrupRegis.TabIndex = 5;
+            this.lblGrupRegis.Text = "Y";
             // 
             // pictureBox1
             // 
@@ -252,76 +248,50 @@
             this.label8.TabIndex = 11;
             this.label8.Text = "Base de datos:";
             // 
-            // label9
+            // lblServidor
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(20, 416);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(47, 13);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "Nombre:";
+            this.lblServidor.AutoSize = true;
+            this.lblServidor.Location = new System.Drawing.Point(21, 404);
+            this.lblServidor.Name = "lblServidor";
+            this.lblServidor.Size = new System.Drawing.Size(14, 13);
+            this.lblServidor.TabIndex = 15;
+            this.lblServidor.Text = "X";
             // 
-            // label10
+            // lblNombre
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(20, 429);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(46, 13);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "Usuario:";
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Location = new System.Drawing.Point(21, 417);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(14, 13);
+            this.lblNombre.TabIndex = 16;
+            this.lblNombre.Text = "Y";
             // 
-            // label11
+            // lblUsuario
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(20, 403);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(49, 13);
-            this.label11.TabIndex = 14;
-            this.label11.Text = "Servidor:";
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Location = new System.Drawing.Point(20, 430);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(14, 13);
+            this.lblUsuario.TabIndex = 17;
+            this.lblUsuario.Text = "Z";
             // 
-            // label12
+            // chartGrupos
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(73, 403);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(14, 13);
-            this.label12.TabIndex = 15;
-            this.label12.Text = "X";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(73, 416);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(14, 13);
-            this.label13.TabIndex = 16;
-            this.label13.Text = "Y";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(72, 429);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(14, 13);
-            this.label14.TabIndex = 17;
-            this.label14.Text = "Z";
-            // 
-            // chart1
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(440, 97);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(440, 244);
-            this.chart1.TabIndex = 18;
-            this.chart1.Text = "chart1";
+            chartArea1.Name = "ChartArea1";
+            this.chartGrupos.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartGrupos.Legends.Add(legend1);
+            this.chartGrupos.Location = new System.Drawing.Point(440, 97);
+            this.chartGrupos.Name = "chartGrupos";
+            this.chartGrupos.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Chocolate;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Grupos";
+            this.chartGrupos.Series.Add(series1);
+            this.chartGrupos.Size = new System.Drawing.Size(440, 244);
+            this.chartGrupos.TabIndex = 18;
+            this.chartGrupos.Text = "chart1";
             // 
             // timer1
             // 
@@ -355,21 +325,18 @@
             this.ClientSize = new System.Drawing.Size(892, 482);
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.lblHora);
-            this.Controls.Add(this.chart1);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.chartGrupos);
+            this.Controls.Add(this.lblUsuario);
+            this.Controls.Add(this.lblNombre);
+            this.Controls.Add(this.lblServidor);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnGestionarContactos);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblGrupRegis);
+            this.Controls.Add(this.lblContRegis);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -377,11 +344,12 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMenuPrincipal";
             this.Text = "FrmMenuPrincipal";
+            this.Load += new System.EventHandler(this.FrmMenuPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartGrupos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -394,31 +362,28 @@
         private System.Windows.Forms.ToolStripMenuItem gestionarContactosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblContRegis;
+        private System.Windows.Forms.Label lblGrupRegis;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnGestionarContactos;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Label lblServidor;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartGrupos;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listaDeGruposToolStripMenuItem;
     }
 }

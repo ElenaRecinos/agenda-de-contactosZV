@@ -94,5 +94,17 @@ namespace DAL
                             c.Apellido.Contains(criterio))
                 .ToList();
         }
+
+        public void GuardarCambios()
+        {
+            _context.SaveChanges();
+        }
+
+        public bool ContactoExiste(string email, string telefonoNumero)
+        {
+            return _context.Contactos.Any(c =>
+                c.Email == email || c.Telefonos.Any(t => t.Numero == telefonoNumero));
+        }
+
     }
 }

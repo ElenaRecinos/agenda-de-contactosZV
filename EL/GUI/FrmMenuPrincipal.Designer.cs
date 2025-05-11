@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenuPrincipal));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -47,10 +48,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblContRegis = new System.Windows.Forms.Label();
             this.lblGrupRegis = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.pbPerfil = new System.Windows.Forms.PictureBox();
+            this.lblNombreUser = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblRol = new System.Windows.Forms.Label();
             this.btnGestionarContactos = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.lblServidor = new System.Windows.Forms.Label();
@@ -61,7 +62,7 @@
             this.lblHora = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartGrupos)).BeginInit();
             this.SuspendLayout();
@@ -135,7 +136,7 @@
             // listaDeGruposToolStripMenuItem
             // 
             this.listaDeGruposToolStripMenuItem.Name = "listaDeGruposToolStripMenuItem";
-            this.listaDeGruposToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listaDeGruposToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.listaDeGruposToolStripMenuItem.Text = "Lista de Grupos";
             // 
             // ayudaToolStripMenuItem
@@ -193,22 +194,24 @@
             this.lblGrupRegis.TabIndex = 5;
             this.lblGrupRegis.Text = "Y";
             // 
-            // pictureBox1
+            // pbPerfil
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(29, 42);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(54, 53);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.pbPerfil.Image = ((System.Drawing.Image)(resources.GetObject("pbPerfil.Image")));
+            this.pbPerfil.Location = new System.Drawing.Point(29, 36);
+            this.pbPerfil.Name = "pbPerfil";
+            this.pbPerfil.Size = new System.Drawing.Size(43, 43);
+            this.pbPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPerfil.TabIndex = 6;
+            this.pbPerfil.TabStop = false;
             // 
-            // label6
+            // lblNombreUser
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(89, 45);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 13);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Nombre de Usuario";
+            this.lblNombreUser.AutoSize = true;
+            this.lblNombreUser.Location = new System.Drawing.Point(89, 45);
+            this.lblNombreUser.Name = "lblNombreUser";
+            this.lblNombreUser.Size = new System.Drawing.Size(98, 13);
+            this.lblNombreUser.TabIndex = 7;
+            this.lblNombreUser.Text = "Nombre de Usuario";
             // 
             // pictureBox2
             // 
@@ -218,14 +221,14 @@
             this.pictureBox2.TabIndex = 8;
             this.pictureBox2.TabStop = false;
             // 
-            // label7
+            // lblRol
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(89, 66);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 13);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Administrador";
+            this.lblRol.AutoSize = true;
+            this.lblRol.Location = new System.Drawing.Point(89, 66);
+            this.lblRol.Name = "lblRol";
+            this.lblRol.Size = new System.Drawing.Size(23, 13);
+            this.lblRol.TabIndex = 9;
+            this.lblRol.Text = "Rol";
             // 
             // btnGestionarContactos
             // 
@@ -331,10 +334,10 @@
             this.Controls.Add(this.lblServidor);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnGestionarContactos);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblRol);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.lblNombreUser);
+            this.Controls.Add(this.pbPerfil);
             this.Controls.Add(this.lblGrupRegis);
             this.Controls.Add(this.lblContRegis);
             this.Controls.Add(this.label3);
@@ -347,7 +350,7 @@
             this.Load += new System.EventHandler(this.FrmMenuPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPerfil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartGrupos)).EndInit();
             this.ResumeLayout(false);
@@ -369,10 +372,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblContRegis;
         private System.Windows.Forms.Label lblGrupRegis;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox pbPerfil;
+        private System.Windows.Forms.Label lblNombreUser;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblRol;
         private System.Windows.Forms.Button btnGestionarContactos;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblServidor;

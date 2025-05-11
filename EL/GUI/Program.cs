@@ -17,7 +17,7 @@ namespace GUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FormContacto());
-            Application.Run(new FrmMenuPrincipal());
+            Application.Run(new FormLogin());
         }
     }
 }

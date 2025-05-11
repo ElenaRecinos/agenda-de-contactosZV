@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace GUI
 {
@@ -19,12 +20,18 @@ namespace GUI
 
         private readonly AgendaDbContext _context;
         private readonly ContactoBLL _contactoBLL;
+        private readonly string _nombreUsuario;
+        private readonly string _rolUsuario;
 
-        public FrmMenuPrincipal()
+        public FrmMenuPrincipal(string nombreUsuario, string rolUsuario)
         {
             InitializeComponent();
             _context = new AgendaDbContext();
             _contactoBLL = new ContactoBLL(_context);
+            lblNombreUser.Text = nombreUsuario;
+            lblRol.Text = rolUsuario;
+            _nombreUsuario = nombreUsuario;
+            _rolUsuario = rolUsuario;
 
         }
 
@@ -95,18 +102,20 @@ namespace GUI
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
         {
+
             try
-            {
+            {      
+
                 var connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["AgendaConnection"].ConnectionString;
                 var builder = new System.Data.SqlClient.SqlConnectionStringBuilder(connectionString);
 
                 string servidor = builder.DataSource;
                 string baseDatos = builder.InitialCatalog;
-                string usuario = builder.IntegratedSecurity ? "(Autenticación Windows)" : builder.UserID;
+                string usuarioBD = builder.IntegratedSecurity ? "(Autenticación Windows)" : builder.UserID;
 
                 lblServidor.Text = $"Servidor: {servidor}";
                 lblNombre.Text = $"Base de datos: {baseDatos}";
-                lblUsuario.Text = $"Usuario: {usuario}";
+                lblUsuario.Text = $"Usuario: {usuarioBD}";
             }
             catch (Exception ex)
             {
@@ -116,6 +125,7 @@ namespace GUI
 
                 MessageBox.Show($"Error al leer configuración: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
 
             int totalContactos = _context.Contactos.Count();
             int totalGrupos = _context.Grupos.Count();
@@ -133,6 +143,23 @@ namespace GUI
             foreach (var item in datos)
             {
                 chartGrupos.Series["Grupos"].Points.AddXY(item.NombreGrupo, item.Cantidad);
+            }
+
+            // Buscar al usuario por su nombre
+            var usuario = _context.Usuarios.FirstOrDefault(u => u.NombreUsuario == _nombreUsuario);
+
+            if (usuario != null && usuario.FotoPerfil != null)
+            {
+                using (MemoryStream ms = new MemoryStream(usuario.FotoPerfil))
+                {
+                    pbPerfil.Image = Image.FromStream(ms);
+                }
+                pbPerfil.SizeMode = PictureBoxSizeMode.StretchImage; 
+            }
+            else
+            {
+                pbPerfil.Image = Properties.Resources.Icon;
+                pbPerfil.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
     }

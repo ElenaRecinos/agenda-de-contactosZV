@@ -105,6 +105,5 @@ namespace DAL
             return _context.Contactos.Any(c =>
                 c.Email == email || c.Telefonos.Any(t => t.Numero == telefonoNumero));
         }
-
     }
 }

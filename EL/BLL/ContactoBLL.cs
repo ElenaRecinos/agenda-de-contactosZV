@@ -7,6 +7,7 @@ using EL;
 using DAL;
 using System.Runtime.Remoting.Contexts;
 using BLL.Infraestructura;
+using System.IO;
 
 
 namespace BLL

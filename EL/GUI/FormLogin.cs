@@ -104,10 +104,11 @@ namespace GUI
                     string nombreUsuario = usuarioAutenticado.NombreUsuario;
                     string rolUsuario = usuarioAutenticado.Rol;
 
-                    FrmMenuPrincipal menu = new FrmMenuPrincipal(nombreUsuario, rolUsuario);
-                    menu.Show();
-                    this.Hide();
-                }
+                // Mostrar menú
+                FrmMenuPrincipal menu = new FrmMenuPrincipal(nombreUsuario, rolUsuario);
+                menu.Show();
+                this.Hide(); 
+            }
                 else
                 {
                     pbUsuarioWarning.Visible = true;

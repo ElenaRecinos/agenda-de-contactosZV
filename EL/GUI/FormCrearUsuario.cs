@@ -153,7 +153,7 @@ namespace GUI
             this.Close();
         }
 
-        //Al cerrar la ventana automaáticamente se dirige a FormLogin
+        //Al cerrar la ventana automáticamente se dirige a FormLogin
         private void FormCrearUsuario_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (!volverDesdeBoton)

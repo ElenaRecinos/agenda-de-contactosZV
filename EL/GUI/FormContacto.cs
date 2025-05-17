@@ -60,7 +60,6 @@ namespace GUI
         private void FormContacto_Load(object sender, EventArgs e)
         {
 
-
             // Cargar los grupos y otros comportamientos al iniciar.
             var grupoServicio = _grupoBLL;
             var grupos = grupoServicio.ObtenerTodos();
